@@ -7,8 +7,6 @@
   
   <link rel="icon" type="image/png" href="./favicon.png">
 
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-
   <style>
     :root {
       --pl-purple: #38003c;
@@ -32,6 +30,7 @@
       background-color: #f2f2f2;
       color: var(--pl-dark);
       padding: 20px;
+      padding-bottom: 90px; /* Space so the cookie bar doesn't block content */
       animation: fadeIn 0.8s ease-in-out;
     }
 
@@ -110,7 +109,7 @@
       margin-bottom: 15px;
     }
 
-    /* Premier League Styled Navigation Button with Hover Effect */
+    /* Premier League Styled Navigation Button */
     .pl-btn {
       display: inline-flex;
       align-items: center;
@@ -171,4 +170,211 @@
       padding: 20px;
       margin-bottom: 20px;
       border-radius: 8px;
-      transition: transform 0
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 7px 7px 0px var(--pl-dark);
+    }
+
+    .card-header {
+      background: var(--pl-purple);
+      color: var(--pl-neon);
+      padding: 8px 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 15px;
+      border: 2px solid var(--pl-dark);
+      border-radius: 4px;
+    }
+
+    /* Match Fixture Box Style */
+    .fixture-box {
+      border: 2px solid var(--pl-dark);
+      background-color: #fdfdfd;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .score {
+      background: var(--pl-dark);
+      color: var(--pl-neon);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border: 2px solid var(--pl-dark);
+      border-radius: 6px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 4px 4px 0px var(--pl-dark);
+    }
+
+    /* GUARANTEED COOKIE BANNER STYLES */
+    #cookie-banner-box {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #38003c;
+      color: #ffffff;
+      padding: 16px;
+      border-top: 4px solid #111111;
+      box-shadow: 0px -5px 15px rgba(0,0,0,0.4);
+      z-index: 999999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    #cookie-banner-box button {
+      background-color: #00ff85;
+      color: #111111;
+      border: 2px solid #111111;
+      padding: 10px 24px;
+      font-weight: 900;
+      font-size: 1rem;
+      text-transform: uppercase;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #e90052;
+      transition: transform 0.1s ease;
+    }
+
+    #cookie-banner-box button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header class="scoreboard-header">
+      <span class="league-badge">MATCHDAY LIVE</span>
+      <span class="live-clock">90'+4 BANTER</span>
+    </header>
+
+    <section class="hero-banner">
+      <h1 class="brand-title">THIS IS OCEN</h1>
+      <p class="subtitle">Football • Jokes • Life</p>
+
+      <a href="my team.html" class="pl-btn">
+        <span>MY TEAM STUFF</span>
+        <span class="pl-btn-arrow">→</span>
+      </a>
+    </section>
+
+    <div class="main-grid">
+      
+      <main>
+        <article class="card">
+          <div class="card-header">Welcome</div>
+          <h2>Welcome to My Pitch ⚽</h2>
+          <br>
+          <p>
+            This is my official hub where I talk about the beautiful game, share hot takes, crack jokes, and document my life updates. Whether you're here to talk tactics or just laugh at VAR decisions, welcome aboard!
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-header">Weekly Jokes</div>
+          <h2>The Banter Corner 😂</h2>
+          <br>
+          <div class="fixture-box">
+            <span>Why did the referee bring string to the match?</span>
+            <span class="score">JOKE #1</span>
+          </div>
+          <p style="margin-top: 8px; font-style: italic;">To tie the score!</p>
+
+          <div class="fixture-box">
+            <span>My defense in FIFA this weekend:</span>
+            <span class="score">JOKE #2</span>
+          </div>
+          <p style="margin-top: 8px; font-style: italic;">More open than a 24-hour drive-thru.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-header">Gallery</div>
+          <h2>Life & Football Moments 📸</h2>
+          <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=500" alt="Football Stadium">
+            <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=500" alt="Soccer Ball on Pitch">
+            <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=500" alt="Match Atmosphere">
+          </div>
+        </article>
+      </main>
+
+      <aside>
+        <div class="card">
+          <div class="card-header">Latest Result</div>
+          <div class="fixture-box">
+            <span>OCEN FC</span>
+            <span class="score">3 - 0</span>
+            <span>BAD VIBES</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">About Me</div>
+          <p style="margin-top: 10px;">
+            Football fanatic, part-time comedian, full-time living my best life.
+          </p>
+        </div>
+      </aside>
+
+    </div>
+
+  </div>
+
+  <div id="cookie-banner-box">
+    <span>⚽ This site uses cookies to bring you the best matchday banter and experience.</span>
+    <button onclick="acceptCookies()">Got it!</button>
+  </div>
+
+  <script>
+    // Tab title switcher
+    let originalTitle = document.title;
+    window.addEventListener('blur', () => { document.title = "⚽ Back on the pitch!"; });
+    window.addEventListener('focus', () => { document.title = originalTitle; });
+
+    // Cookie Banner Handler
+    function acceptCookies() {
+      localStorage.setItem('ocen_cookie_accepted', 'true');
+      document.getElementById('cookie-banner-box').style.display = 'none';
+    }
+
+    // Check if the user already clicked "Got it!"
+    window.addEventListener('load', function() {
+      if (localStorage.getItem('ocen_cookie_accepted') === 'true') {
+        document.getElementById('cookie-banner-box').style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
