@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>this is ocen | Football, Jokes & Life</title>
+  
+  <!-- FAVICON LOGO (Replace favicon.png with your image file name) -->
+  <link rel="icon" type="image/png" href="./favicon.png">
+
   <style>
     :root {
       --pl-purple: #38003c;
@@ -22,10 +26,17 @@
       font-family: 'Trebuchet MS', 'Impact', sans-serif;
     }
 
+    /* Page Fade-In Animation */
     body {
       background-color: #f2f2f2;
       color: var(--pl-dark);
       padding: 20px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .container {
@@ -98,7 +109,7 @@
       margin-bottom: 15px;
     }
 
-    /* Premier League Styled Navigation Button */
+    /* Premier League Styled Navigation Button with Hover Effect */
     .pl-btn {
       display: inline-flex;
       align-items: center;
@@ -124,7 +135,7 @@
       background: var(--pl-neon);
       color: var(--pl-dark);
       box-shadow: 6px 6px 0px var(--pl-pink);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     .pl-btn-arrow {
@@ -159,6 +170,13 @@
       padding: 20px;
       margin-bottom: 20px;
       border-radius: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Subtle lift when hovering over content cards */
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 7px 7px 0px var(--pl-dark);
     }
 
     .card-header {
@@ -193,7 +211,7 @@
       border-radius: 4px;
     }
 
-    /* Gallery Section */
+    /* Gallery Section with Zoom Hover */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -207,32 +225,35 @@
       object-fit: cover;
       border: 2px solid var(--pl-dark);
       border-radius: 6px;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .gallery img:hover {
-      transform: scale(1.03);
+      transform: scale(1.05);
+      box-shadow: 4px 4px 0px var(--pl-dark);
     }
   </style>
-</head>
+
+  <!-- COOKIE BANNER STYLES & SCRIPT -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
-<script>
-window.addEventListener("load", function(){
-  window.cookieconsent.initialise({
-    "palette": {
-      "popup": { "background": "#252e39" },
-      "button": { "background": "#14a76c" }
-    },
-    "theme": "classic",
-    "content": {
-      "message": "This website uses cookies to ensure you get the best experience.",
-      "dismiss": "Got it!",
-      "link": "Learn more"
-    }
-  });
-});
-</script>
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+  <script>
+    window.addEventListener("load", function(){
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": { "background": "#38003c" },
+          "button": { "background": "#00ff85", "text": "#111111" }
+        },
+        "theme": "classic",
+        "content": {
+          "message": "⚽ This site uses cookies to bring you the best matchday banter and experience.",
+          "dismiss": "Got it!",
+          "link": "Learn more"
+        }
+      });
+    });
+  </script>
+</head>
 <body>
 
   <div class="container">
@@ -319,6 +340,19 @@ window.addEventListener("load", function(){
     </div>
 
   </div>
+
+  <!-- Dynamic Tab Title Switcher (Fun JavaScript Trick) -->
+  <script>
+    let originalTitle = document.title;
+
+    window.addEventListener('blur', () => {
+      document.title = "⚽ Back on the pitch!";
+    });
+
+    window.addEventListener('focus', () => {
+      document.title = originalTitle;
+    });
+  </script>
 
 </body>
 </html>
