@@ -95,6 +95,45 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1.5px;
+      margin-bottom: 15px;
+    }
+
+    /* Premier League Styled Navigation Button */
+    .pl-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--pl-dark);
+      color: var(--pl-neon);
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 6px;
+      border: 3px solid var(--pl-neon);
+      box-shadow: 4px 4px 0px var(--pl-pink);
+      transition: all 0.2s ease-in-out;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .pl-btn:hover {
+      background: var(--pl-neon);
+      color: var(--pl-dark);
+      box-shadow: 6px 6px 0px var(--pl-pink);
+      transform: translateY(-2px);
+    }
+
+    .pl-btn-arrow {
+      font-size: 1.3rem;
+      transition: transform 0.2s ease;
+    }
+
+    .pl-btn:hover .pl-btn-arrow {
+      transform: translateX(5px);
     }
 
     /* Grid Layout for Content */
@@ -107,6 +146,9 @@
     @media (max-width: 768px) {
       .main-grid {
         grid-template-columns: 1fr;
+      }
+      .brand-title {
+        font-size: 2.8rem;
       }
     }
 
@@ -183,13 +225,19 @@
       <span class="live-clock">90'+4 BANTER</span>
     </header>
 
-    <!-- Arsenal-Style Heading -->
+    <!-- Arsenal-Style Heading + Navigation Button -->
     <section class="hero-banner">
       <h1 class="brand-title">THIS IS OCEN</h1>
       <p class="subtitle">Football • Jokes • Life</p>
+
+      <!-- Button Linking to Team Page -->
+      <a href="my-team.html" class="pl-btn">
+        <span>MY TEAM STUFF</span>
+        <span class="pl-btn-arrow">→</span>
+      </a>
     </section>
 
-    <!-- Content Sections -->
+    <!-- Main Content Grid -->
     <div class="main-grid">
       
       <!-- Main Content Column -->
@@ -236,9 +284,9 @@
         <div class="card">
           <div class="card-header">Latest Result</div>
           <div class="fixture-box">
-            <span>south FC</span>
-            <span class="score">2 - 1</span>
-            <span>Annoited</span>
+            <span>OCEN FC</span>
+            <span class="score">3 - 0</span>
+            <span>BAD VIBES</span>
           </div>
         </div>
 
