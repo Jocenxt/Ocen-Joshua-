@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MY TEAM | Premier League Squad & Fixtures</title>
+  <style>
+    :root {
+      --pl-purple: #38003c;
+      --pl-neon: #00ff85;
+      --pl-pink: #e90052;
+      --pl-white: #ffffff;
+      --pl-dark: #120014;
+      --pl-yellow: #ffeb00;
+      --pl-slash: linear-gradient(115deg, #38003c 0%, #38003c 70%, #00ff85 70.5%, #00ff85 73%, #e90052 73.5%, #e90052 76%, #120014 76.5%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Trebuchet MS', 'Impact', Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--pl-dark);
+      color: var(--pl-white);
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    /* PL Slash Header Graphic */
+    .pl-banner-slash {
+      background: var(--pl-slash);
+      padding: 12px 25px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    .pl-badge {
+      background-color: var(--pl-neon);
+      color: var(--pl-purple);
+      font-weight: 900;
+      padding: 6px 14px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+    }
+
+    /* Main "MY TEAM" Scoreboard Title Bar */
+    .scoreboard-title-box {
+      background: var(--pl-purple);
+      border-left: 10px solid var(--pl-neon);
+      padding: 30px 20px;
+      border-radius: 6px;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+    /* PL Style Diagonal Slashes background effect */
+    .scoreboard-title-box::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 150px;
+      height: 200%;
+      background: linear-gradient(115deg, transparent 0%, transparent 40%, var(--pl-neon) 40%, var(--pl-neon) 50%, var(--pl-pink) 50%, var(--pl-pink) 60%, transparent 60%);
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .main-heading {
+      font-size: 4rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--pl-white);
+      font-family: 'Impact', sans-serif;
+      text-shadow: 4px 4px 0px var(--pl-dark);
+    }
+
+    .sub-heading {
+      color: var(--pl-neon);
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--pl-white);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 25px;
+      background: var(--pl-neon);
+      transform: skewX(-15deg);
+    }
+
+    /* 4-5-1 Pitch Layout */
+    .pitch-container {
+      background: linear-gradient(180deg, #1f7a32 0%, #175e26 100%);
+      border: 4px solid var(--pl-white);
+      border-radius: 12px;
+      padding: 30px 10px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      position: relative;
+    }
+
+    .formation-row {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+    }
+
+    .player-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80px;
+    }
+
+    .player-name {
+      background: var(--pl-dark);
+      color: var(--pl-white);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 3px;
+      border: 1px solid var(--pl-neon);
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+    }
+
+    .shirt {
+      width: 45px;
+      height: 45px;
+      background: var(--pl-pink);
+      color: var(--pl-white);
+      font-weight: 900;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      border: 2px solid var(--pl-white);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .gk-shirt {
+      background: var(--pl-yellow);
+      color: var(--pl-dark);
+    }
+
+    /* Fixtures Section */
+    .fixtures-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .fixture-row {
+      background: var(--pl-purple);
+      border-left: 6px solid var(--pl-pink);
+      padding: 15px 20px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Diagonal slash accent on fixture cards */
+    .fixture-row::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 20px;
+      height: 100%;
+      background: var(--pl-neon);
+      transform: skewX(-20deg) translateX(10px);
+    }
+
+    .fixture-teams {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .team-home {
+      color: var(--pl-white);
+    }
+
+    .vs-badge {
+      background: var(--pl-dark);
+      color: var(--pl-neon);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    .team-away {
+      color: #ddd;
+    }
+
+    .fixture-date {
+      color: var(--pl-neon);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-right: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .main-heading { font-size: 2.8rem; }
+      .player-card { width: 60px; }
+      .shirt { width: 36px; height: 36px; font-size: 0.9rem; }
+      .player-name { font-size: 0.65rem; }
+      .fixture-teams { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Top PL Style Header Slash Bar -->
+    <div class="pl-banner-slash">
+      <span class="pl-badge">PREMIER LEAGUE SQUAD</span>
+      <span style="font-weight: bold; font-size: 0.9rem; color: var(--pl-dark);">SEASON 2026/27</span>
+    </div>
+
+    <!-- Banner / Main Heading -->
+    <header class="scoreboard-title-box">
+      <h1 class="main-heading">MY TEAM</h1>
+      <p class="sub-heading">TACTICAL FORMATION & MATCH FIXTURES</p>
+    </header>
+
+    <!-- SECTION 1: 4-5-1 FORMATION -->
+    <section>
+      <h2 class="section-title">Starting XI (4-5-1)</h2>
+
+      <div class="pitch-container">
+
+        <!-- STRIKER (1) -->
+        <div class="formation-row">
+          <div class="player-card">
+            <span class="player-name">PLAYER NAME</span>
+            <div class="shirt">9</div>
+          </div>
+        </div>
+
+        <!-- MIDFIELD (5) -->
+        <div class="formation-row">
+          <div class="player-card">
+            <span class="player-name">PLAYER NAME</span>
+            <div class="shirt">11</div>
+          </div>
+          <div class="player-card">
+            <span class="player-name">PLAYER NAME</span>
+            <div class="shirt">8</div>
+          </div>
+          <div class="player-card">
+            <span class="player-name">PLAYER NAME</span>
+            <div class="shirt">4</div>
+          </div>
+          <div class="player-card">
+            <span class="player-name">PLAYER NAME</span>
+            <div class="shirt">10</div>
+          </div>
+          <div class="player-card">
+            <span class="player-name">PLAYER NAME</span>
+            <div class="shirt">7</div>
+          </div>
+        </div>
+
+        <!-- DEFENSE (4) -->
+        <div class="formation-row">
+          <div class="player-card">
+            <span class="player-name">PLAYER NAME</span>
+            <div class="shirt">3</div>
+          </div>
+          <div class="player-card">
+            <span class="player-name">PLAYER NAME</span>
+            <div class="shirt">5</div>
+          </div>
+          <div class="player-card">
+            <span class="player-name">PLAYER NAME</span>
+            <div class="shirt">6</div>
+          </div>
+          <div class="player-card">
+            <span class="player-name">PLAYER NAME</span>
+            <div class="shirt">2</div>
+          </div>
+        </div>
+
+        <!-- GOALKEEPER (1) -->
+        <div class="formation-row">
+          <div class="player-card">
+            <span class="player-name">PLAYER NAME</span>
+            <div class="shirt gk-shirt">1</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: NEXT FIXTURES -->
+    <section>
+      <h2 class="section-title">Next Fixtures</h2>
+
+      <div class="fixtures-container">
+
+        <!-- Fixture 1 -->
+        <div class="fixture-row">
+          <div class="fixture-teams">
+            <span class="team-home">MY TEAM</span>
+            <span class="vs-badge">VS</span>
+            <span class="team-away">OPPONENT 1</span>
+          </div>
+          <span class="fixture-date">SAT 18 JUL - 15:00</span>
+        </div>
+
+        <!-- Fixture 2 -->
+        <div class="fixture-row">
+          <div class="fixture-teams">
+            <span class="team-home">OPPONENT 2</span>
+            <span class="vs-badge">VS</span>
+            <span class="team-away">MY TEAM</span>
+          </div>
+          <span class="fixture-date">SUN 26 JUL - 16:30</span>
+        </div>
+
+        <!-- Fixture 3 -->
+        <div class="fixture-row">
+          <div class="fixture-teams">
+            <span class="team-home">MY TEAM</span>
+            <span class="vs-badge">VS</span>
+            <span class="team-away">OPPONENT 3</span>
+          </div>
+          <span class="fixture-date">SAT 1 AUG - 12:30</span>
+        </div>
+
+        <!-- Fixture 4 -->
+        <div class="fixture-row">
+          <div class="fixture-teams">
+            <span class="team-home">OPPONENT 4</span>
+            <span class="vs-badge">VS</span>
+            <span class="team-away">MY TEAM</span>
+          </div>
+          <span class="fixture-date">SAT 8 AUG - 15:00</span>
+        </div>
+
+        <!-- Fixture 5 -->
+        <div class="fixture-row">
+          <div class="fixture-teams">
+            <span class="team-home">MY TEAM</span>
+            <span class="vs-badge">VS</span>
+            <span class="team-away">OPPONENT 5</span>
+          </div>
+          <span class="fixture-date">SUN 16 AUG - 16:30</span>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
