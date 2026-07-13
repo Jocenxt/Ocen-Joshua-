@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Radial Gradient -->
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3a0007"/>
+      <stop offset="100%" stop-color="#0a0a0c"/>
+    </radialGradient>
+
+    <!-- Metallic Gold/Bronze Gradient -->
+    <linearGradient id="goldMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe259"/>
+      <stop offset="50%" stop-color="#ffa751"/>
+      <stop offset="100%" stop-color="#9a4100"/>
+    </linearGradient>
+
+    <!-- Crimson Spike Gradient -->
+    <linearGradient id="spikeRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff1e27"/>
+      <stop offset="50%" stop-color="#b30006"/>
+      <stop offset="100%" stop-color="#4a0002"/>
+    </linearGradient>
+
+    <!-- Inner Shield Gradient -->
+    <linearGradient id="shieldDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a2a35"/>
+      <stop offset="100%" stop-color="#111116"/>
+    </linearGradient>
+
+    <!-- Glowing Drop Shadow -->
+    <filter id="redGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="500" height="500" rx="40" fill="url(#bgGlow)"/>
+
+  <!-- OUTER SPIKES RING (8 Directional Spikes) -->
+  <g id="spikes" fill="url(#spikeRed)" stroke="#000000" stroke-width="3" filter="url(#redGlow)">
+    <!-- Top & Bottom Main Spikes -->
+    <polygon points="250,20 270,110 230,110" />
+    <polygon points="250,480 270,390 230,390" />
+    <!-- Left & Right Main Spikes -->
+    <polygon points="20,250 110,230 110,270" />
+    <polygon points="480,250 390,230 390,270" />
+    <!-- Diagonal Corner Spikes -->
+    <polygon points="80,80 150,130 130,150" />
+    <polygon points="420,80 370,150 350,130" />
+    <polygon points="80,420 130,350 150,370" />
+    <polygon points="420,420 350,370 370,350" />
+  </g>
+
+  <!-- SECONDARY INNER SPIKES -->
+  <g id="inner-spikes" fill="url(#goldMetallic)">
+    <polygon points="250,60 262,120 238,120" />
+    <polygon points="250,440 262,380 238,380" />
+    <polygon points="60,250 120,238 120,262" />
+    <polygon points="440,250 380,238 380,262" />
+  </g>
+
+  <!-- CENTRAL FACTION CREST / SHIELD -->
+  <polygon points="250,90 370,160 370,340 250,410 130,340 130,160" 
+           fill="url(#shieldDark)" 
+           stroke="url(#goldMetallic)" 
+           stroke-width="8" 
+           stroke-linejoin="round" />
+
+  <!-- INNER CREST ACCENT LINE -->
+  <polygon points="250,110 350,170 350,330 250,390 150,330 150,170" 
+           fill="none" 
+           stroke="#ff1e27" 
+           stroke-width="3" 
+           opacity="0.7" />
+
+  <!-- AGGRESSIVE "S" FACTION LOGO -->
+  <g id="faction-letter-S" fill="url(#goldMetallic)" stroke="#000000" stroke-width="4">
+    <!-- Angular/Aggressive Letter S Path -->
+    <path d="M 320,165 
+             L 200,165 
+             L 175,190 
+             L 175,235 
+             L 300,260 
+             L 315,275 
+             L 315,310 
+             L 180,310 
+             L 165,295 
+             L 165,335 
+             L 300,335 
+             L 325,310 
+             L 325,265 
+             L 200,240 
+             L 185,225 
+             L 185,190 
+             L 305,190 
+             Z" />
+  </g>
+
+  <!-- SHINE HIGHLIGHT ON THE "S" -->
+  <path d="M 200,165 L 320,165 L 305,190 L 185,190 Z" fill="#ffffff" opacity="0.4" />
+</svg>
